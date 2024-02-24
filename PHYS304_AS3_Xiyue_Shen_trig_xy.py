@@ -135,15 +135,11 @@ def xcot(x):
 
     return h/s
 
-x=np.linspace(1, 30,100)
+x=np.linspace(1, 30,200)
 
-#plt.plot(x,np.vectorize(gsin)(x),label=r'$sin(x)$')
-# plt.plot(x,np.vectorize(gcos)(x),label=r'$cos(x)$')
-# plt.plot(x,np.vectorize(gtan)(x),label=r'$tan(x)$')
-
-plt.plot(x,np.vectorize(xsin)(x),label=r'$sin(x)$')
-plt.plot(x,np.vectorize(xcos)(x),label=r'$cos(x)$')
-plt.plot(x,np.vectorize(xtan)(x),label=r'$tan(x)$')
+plt.plot(x,np.vectorize(gsin)(x),label=r'$sin(x)$')
+plt.plot(x,np.vectorize(gcos)(x),label=r'$cos(x)$')
+plt.plot(x,np.vectorize(gtan)(x),label=r'$tan(x)$')
 
 plt.xlabel(r'$x$')
 plt.ylim(-1.5,+1.5)
@@ -152,8 +148,22 @@ plt.ylabel(r'Trig Functions')
 plt.show()
 
 plt.figure
+plt.plot(x,((np.vectorize(xsin)(x)-np.vectorize(gsin)(x))/(np.vectorize(gsin)(x))),label=r'$sin(x)$$Error$')
+plt.plot(x,(np.absolute((np.vectorize(xcos)(x)-np.vectorize(gcos)(x))/np.vectorize(gcos)(x))),label=r'$cos(x)$$Error$')
+plt.plot(x,((np.vectorize(xtan)(x)-np.vectorize(gtan)(x))/np.vectorize(gtan)(x)),label=r'$tan(x)$$Error$')
+plt.yscale('log')
+plt.xlabel(r"x")
+plt.ylabel(r'Fractional errors on log scale')
+plt.legend()
+plt.show()
+
+plt.figure
 plt.plot(x,(np.vectorize(xsin)(x)-np.vectorize(gsin)(x))/(np.vectorize(gsin)(x)),label=r'$sin(x)$')
 plt.plot(x,(np.vectorize(xcos)(x)-np.vectorize(gcos)(x))/np.vectorize(gcos)(x),label=r'$cos(x)$')
 plt.plot(x,(np.vectorize(xtan)(x)-np.vectorize(gtan)(x))/np.vectorize(gtan)(x),label=r'$tan(x)$')
+plt.xlabel(r"x")
+plt.ylabel(r'Fractional errors')
 plt.legend()
 plt.show()
+
+
