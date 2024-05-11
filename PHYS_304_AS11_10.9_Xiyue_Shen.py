@@ -35,7 +35,7 @@ print(total_energy(N,my_matrix))
 #part b
 
 J=1
-T=1
+T=5
 k=1
 
 def flip_local_energy(N,config):
@@ -98,7 +98,6 @@ def magnetization(config, steps):
         m=0
         m+=np.sum(config)
         M.append(m)
-    
     return(M)
 
 steps=1000000
